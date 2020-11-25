@@ -65,11 +65,12 @@ int find_built_in_3(char **args, char **env, char *buffer)
 */
 int fexit(char **args, char **env, char *buffer)
 {
+	int i = 0;
 	(void)env;
 
 	free(buffer);
 	free(args);
-	exit(0);
+	exit(i);
 }
 /**
 * fcd - command cd function
