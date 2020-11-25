@@ -89,15 +89,15 @@ char *getpath_4(char *str, char **env)
 	struct stat st;
 
 	path = find_path(env);
-	strtok(path, "=");
-	tkn = strtok(NULL, ":");
-	if (tkn == NULL)
+	if (path[5] == '\0')
 	{
 		perror("");
 		free(path);
 		free(tkn);
 		return (NULL);
 	}
+	strtok(path, "=");
+	tkn = strtok(NULL, ":");
 	while (tkn != NULL)
 	{
 		tkn = str_concat(tkn, barra);
