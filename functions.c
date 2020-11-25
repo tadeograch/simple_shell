@@ -147,5 +147,7 @@ void execute_5(char *path, char **args, char **env)
 		{
 			wait(&status);
 			free(args);
+			if (status == 25088)
+				exit(0);
 		}
 }
