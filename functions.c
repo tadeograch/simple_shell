@@ -91,6 +91,13 @@ char *getpath_4(char *str, char **env)
 	path = find_path(env);
 	strtok(path, "=");
 	tkn = strtok(NULL, ":");
+	if (tkn == NULL)
+	{
+		perror("");
+		free(path);
+		free(tkn);
+		return (NULL);
+	}
 	while (tkn != NULL)
 	{
 		tkn = str_concat(tkn, barra);
