@@ -82,7 +82,8 @@ int fcd(char **args, char **env, char *buffer)
 {
 	char *path = "HOME=";
 	char *tmp = NULL;
-	int i, j, k;
+	char *cwd = NULL;
+	int i, j, k, lencwd = 0;
 
 	if (args[1] == NULL)
 	{
@@ -109,7 +110,25 @@ int fcd(char **args, char **env, char *buffer)
 	}
 	else
 	{
-		if (chdir(args[1]) != 0)
+		if (_strcmp(args[1], "-") == 0)
+		{
+			if (chdir("..") != 0)
+			{
+				free(tmp);
+				perror("");
+			}
+			cwd = malloc(100);
+			getcwd(cwd, 100);
+			lencwd = _strlen(cwd);
+			write(1, cwd, lencwd);
+			write(1, "\n", 1);
+			free(cwd);
+			free(tmp);
+			free(buffer);
+			free(args);
+			return(0);
+		}
+		else if (chdir(args[1]) != 0)
 		{
 			free(tmp);
 			perror("");
