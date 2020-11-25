@@ -89,6 +89,12 @@ char *getpath_4(char *str, char **env)
 	struct stat st;
 
 	path = find_path(env);
+	if (path == NULL)
+	{
+		perror("");
+		free(path);
+		return (NULL);
+	}
 	strtok(path, "=");
 	tkn = strtok(NULL, ":");
 	while (tkn != NULL)

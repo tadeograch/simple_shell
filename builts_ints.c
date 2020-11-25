@@ -12,7 +12,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 
 	built_in functions[] = {
 		{"exit", fexit},
-		/*{"help", fhelp},*/
+		/*{"help", fhelp}, BORRAR*/
 		{"cd", fcd},
 		{"env", fenv},
 		{NULL, NULL}
@@ -34,7 +34,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 	}
 	return (1);
 }
-/**
+/** BORRAR
 * fhelp - command help function
 * @args: arguments
 * @env: environment variables
@@ -55,7 +55,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 	free(buffer);
 	printf("HELP!\n");
 	return (0);
-}*/
+} HASTA ACA*/
 /**
 * fexit - command exit function
 * @args: arguments
