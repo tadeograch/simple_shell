@@ -12,7 +12,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 
 	built_in functions[] = {
 		{"exit", fexit},
-		{"help", fhelp},
+		/*{"help", fhelp},*/
 		{"cd", fcd},
 		{"env", fenv},
 		{NULL, NULL}
@@ -41,7 +41,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 * @buffer: user buffer
 * Return: result 0 or -1
 */
-int fhelp(char **args, char **env, char *buffer)
+/*int fhelp(char **args, char **env, char *buffer)
 {
 	(void)env;
 	if (args[1] != NULL)
@@ -55,7 +55,7 @@ int fhelp(char **args, char **env, char *buffer)
 	free(buffer);
 	printf("HELP!\n");
 	return (0);
-}
+}*/
 /**
 * fexit - command exit function
 * @args: arguments
