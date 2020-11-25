@@ -82,8 +82,7 @@ int fcd(char **args, char **env, char *buffer)
 {
 	char *path = "HOME=";
 	char *tmp = NULL;
-	char *cwd = NULL;
-	int i, j, k, lencwd = 0;
+	int i, j, k;
 
 	if (args[1] == NULL)
 	{
@@ -103,38 +102,49 @@ int fcd(char **args, char **env, char *buffer)
 		for (k = 0; env[i][j] != '\0'; j++, k++)
 			tmp[k] = env[i][j];
 		if (chdir(tmp) != 0)
-		{
-			free(tmp);
-			perror("");
-		}
+			cderror(tmp);
 	}
 	else
 	{
 		if (_strcmp(args[1], "-") == 0)
 		{
-			if (chdir("..") != 0)
-			{
-				free(tmp);
-				perror("");
-			}
-			cwd = malloc(100);
-			getcwd(cwd, 100);
-			lencwd = _strlen(cwd);
-			write(1, cwd, lencwd);
-			write(1, "\n", 1);
-			free(cwd);
-			free(tmp);
-			free(buffer);
-			free(args);
-			return(0);
+			updir(tmp, buffer, args);
+			return (0);
 		}
 		else if (chdir(args[1]) != 0)
 		{
-			free(tmp);
-			perror("");
+			cderror(tmp);
 		}
 	}
 		free(buffer);
 		free(args);
 		return (0);
+}
+
+int updir(char *tmp, char *buffer, char **args)
+{
+	char *cwd = NULL;
+	int lencwd = 0;
+
+	if (chdir("..") != 0)
+	{
+		free(tmp);
+		perror("");
+	}
+	cwd = malloc(100);
+	getcwd(cwd, 100);
+	lencwd = _strlen(cwd);
+	write(1, cwd, lencwd);
+	write(1, "\n", 1);
+	free(cwd);
+	free(tmp);
+	free(buffer);
+	free(args);
+	return (0);
+}
+
+void cderror(char *tmp)
+{
+	free(tmp);
+	perror("");
 }
