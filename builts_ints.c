@@ -120,7 +120,13 @@ int fcd(char **args, char **env, char *buffer)
 		free(args);
 		return (0);
 }
-
+/**
+* updir - function goes up one directory
+* @tmp: path
+* @buffer: user buffer
+* @args: user arguments
+* Return: result 0
+*/
 int updir(char *tmp, char *buffer, char **args)
 {
 	char *cwd = NULL;
@@ -142,7 +148,11 @@ int updir(char *tmp, char *buffer, char **args)
 	free(args);
 	return (0);
 }
-
+/**
+* cderror - function for cd errors
+* @tmp: path
+* Return: void
+*/
 void cderror(char *tmp)
 {
 	free(tmp);
