@@ -11,7 +11,6 @@ int main(int ac, char **av, char **env)
 	char *buffer = NULL;
 	char **args = NULL;
 	int built_in = 0;
-	char *path = NULL;
 	(void)ac;
 	(void)av;
 
@@ -32,7 +31,7 @@ int main(int ac, char **av, char **env)
 			{
 				continue;
 			}
-			if (main_extension(args, path, buffer, env) == 1)
+			if (main_extension(args, buffer, env) == 1)
 				continue;
 			free(buffer);
 		}
@@ -53,21 +52,19 @@ int main(int ac, char **av, char **env)
  * @env: environment variables
  * Return: 0 on succes, 1 on failure.
  */
-int main_extension(char **args, char *path, char *buffer, char **env)
+int main_extension(char **args, char *buffer, char **env)
 {
 	struct stat st;
 
 	if (stat(args[0], &st) != 0)
 	{
-		path = getpath_4(args[0], env);
-		if (path == NULL)
+		args[0] = getpath_4(args, env);
+		if (args[0] == NULL)
 		{
 			free(buffer);
 			free(args);
 			return (1);
 		}
-		execute_5(path, args, env);
-		free(path);
 	}
 	else
 	{
@@ -77,8 +74,9 @@ int main_extension(char **args, char *path, char *buffer, char **env)
 			free(args);
 			return (1);
 		}
-		path = args[0];
-		execute_5(path, args, env);
 	}
+	execute_5(args[0], args, env);
+	free(args[0]);
+	free(args);
 	return (0);
 }
