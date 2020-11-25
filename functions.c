@@ -80,7 +80,7 @@ char **split_line_2(char *buffer)
  * @env: environment variable
  * Return: cat or NULL;
  */
-char *getpath_4(char **args, char **env)
+char *getpath_4(char *str, char **env)
 {
 	int res = 0;
 	char *cat = NULL, *barra = "/";
@@ -94,7 +94,7 @@ char *getpath_4(char **args, char **env)
 	while (tkn != NULL)
 	{
 		tkn = str_concat(tkn, barra);
-		cat = str_concat(tkn, args[0]);
+		cat = str_concat(tkn, str);
 		res = stat(cat, &st);
 		if (res == 0)
 		{
@@ -109,7 +109,7 @@ char *getpath_4(char **args, char **env)
 		}
 		tkn = strtok(NULL, ":");
 	}
-	print_error(args[0], "command not found");
+	print_error(str, "command not found");
 	free(tkn);
 	free(path);
 	return (NULL);
