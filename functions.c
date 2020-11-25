@@ -89,7 +89,7 @@ char *getpath_4(char *str, char **env)
 	struct stat st;
 
 	path = find_path(env);
-	if (path[6] == '\0')
+	if (path == NULL)
 	{
 		perror("");
 		free(path);

@@ -14,6 +14,11 @@ char *find_path(char **env)
 	{
 		if (_strncmp(path, env[i], len) == 0)
 		{
+			if(env[i + 1] == '\0')
+			{
+				perror("");
+				return(NULL);
+			}
 			break;
 		}
 	}
