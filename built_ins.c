@@ -59,7 +59,7 @@ int fexit(char **args, char **env, char *buffer)
 int fcd(char **args, char **env, char *buffer)
 {
 	char *path = "HOME=", *tmp = NULL;
-	int i, k, len = 5;
+	int i, len = 5;
 
 	if (args[1] == NULL)
 	{
