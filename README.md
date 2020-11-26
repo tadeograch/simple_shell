@@ -1,6 +1,7 @@
 ![Hlberton school logo](https://www.holbertonschool.com/holberton-logo.png)
 # simple_shell
-15 day end of first trimester project for Holberton School - Cohort 13 - November 2020. 
+15 day end of first trimester project for
+Holberton School - Cohort 13 - November 2020.
 
 ## Description
 
