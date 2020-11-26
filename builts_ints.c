@@ -80,29 +80,33 @@ int fexit(char **args, char **env, char *buffer)
 */
 int fcd(char **args, char **env, char *buffer)
 {
-	char *path = "HOME=";
-	char *tmp = NULL;
-	int i, j, k;
+	char *path = "HOME=", *tmp = NULL;
+	int i, k, len = 5;
 
 	if (args[1] == NULL)
 	{
 		for (i = 0; env[i] != NULL; i++)
 		{
-			for (j = 0; j < 5; j++)
-			{
-				if (path[j] != env[i][j])
-					break;
-			}
-			if (j == 5)
+			if (_strncmp(path, env[i], len) == 0)
 				break;
 		}
 		tmp = malloc(_strlen(env[i]) + 1);
 		if (tmp == NULL)
+		{
 			perror("");
-		for (k = 0; env[i][j] != '\0'; j++, k++)
-			tmp[k] = env[i][j];
-		if (chdir(tmp) != 0)
-			cderror(tmp);
+			return (0);
+		}
+		strcpy(tmp, env[i]);
+		strtok(tmp, "=");
+		tmp = strtok(NULL, "\n");
+		tmp = str_concat(tmp, "/");
+		if (tmp == NULL)
+		{
+			free(tmp);
+			return (0);
+		}
+		chdir(tmp);
+		free(tmp);
 	}
 	else
 	{
@@ -112,12 +116,9 @@ int fcd(char **args, char **env, char *buffer)
 			return (0);
 		}
 		else if (chdir(args[1]) != 0)
-		{
 			cderror(tmp);
-		}
 	}
-		free(buffer);
-		free(args);
+		free(buffer), free(args);
 		return (0);
 }
 /**
