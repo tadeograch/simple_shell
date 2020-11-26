@@ -12,7 +12,6 @@ int find_built_in_3(char **args, char **env, char *buffer)
 
 	built_in functions[] = {
 		{"exit", fexit},
-		/*{"help", fhelp}, BORRAR*/
 		{"cd", fcd},
 		{"env", fenv},
 		{NULL, NULL}
