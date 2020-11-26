@@ -34,28 +34,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 	}
 	return (1);
 }
-/** BORRAR
-* fhelp - command help function
-* @args: arguments
-* @env: environment variables
-* @buffer: user buffer
-* Return: result 0 or -1
-*/
-/*int fhelp(char **args, char **env, char *buffer)
-{
-	(void)env;
-	if (args[1] != NULL)
-	{
-		if (execve("/bin/cat", args, NULL) == -1)
-		{
-			perror("");
-		}
-		printf("a!\n");
-	}
-	free(buffer);
-	printf("HELP!\n");
-	return (0);
-} HASTA ACA*/
+
 /**
 * fexit - command exit function
 * @args: arguments
