@@ -30,7 +30,7 @@ char **split_line_2(char *buffer);
 int find_built_in_3(char **args, char **env, char *buffer);
 char *getpath_4(char *str, char **env);
 void execute_5(char *path, char **args, char **env);
-int main_extension(char **args,char *path, char *buffer, char **env);
+int main_extension(char **args, char *path, char *buffer, char **env);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *str_concat(char *s1, char *s2);
@@ -49,5 +49,5 @@ void print_error(char *str, char *error);
 int dir_check(char *dir_name);
 char *spaces(char *buffer);
 int updir(char *tmp, char *buffer, char **args);
-void cderror( char *tmp);
+void cderror(char *tmp);
 #endif
